@@ -24,12 +24,13 @@ class Database {
 
         return self::$instance;
     }
-
+    // в $params = [] попадут параметры из sql запроса
     public function query($sql, $params = [])
     {
         $this->error = false;
         $this->query = $this->pdo->prepare($sql);
 
+        // count - удостоверимся что $params не пустой - имеет значение
         if(count($params)) {
             $i = 1;
             foreach($params as $param) {
