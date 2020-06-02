@@ -49,12 +49,9 @@ class Database
             }
         }
 
-        if(!$this->query->execute())
-        {
+        if(!$this->query->execute()) {
             $this->error = true;
-        }
-        else
-        {
+        }else {
             $this->results = $this->query->fetchAll(PDO::FETCH_OBJ);
             $this->count = $this->query->rowCount();
         }
