@@ -23,3 +23,5 @@ if($user->isLoggedIn()) {
 } else {
     echo "<a href='login.php'>Login</a> or <a href='register.php'>Register</a>";
 }
+
+
