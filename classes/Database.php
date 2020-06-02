@@ -90,6 +90,7 @@ class Database
 
     public function action($action, $table, $where = [])
     {
+        // if(count($where) === 3) если 3 элемента в $where
         if(count($where) === 3) {
 
             $operators = ['=', '>', '<', '>=', '<='];
@@ -98,11 +99,13 @@ class Database
             $operator = $where[1];
             $value = $where[2];
 
+            // если в массиве $operators есть $operator
+            // in_array возвращает true или false в зависимости от того нашла ли эта функция значение $operator в массиве $operators
             if(in_array($operator, $operators)) {
 
                 $sql = "{$action} FROM {$table} WHERE {$field} {$operator} ?";
                 if(!$this->query($sql, [$value])->error()) { //true если есть ошибка
-                    return $this;
+                    return $this; // возвращаем обьект
                 }
             }
         }
