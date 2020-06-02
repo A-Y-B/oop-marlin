@@ -1,16 +1,22 @@
 <?php
 
-class Database {
+class Database
+{
     private static $instance = null;
     private $pdo, $query, $error = false, $results, $count;
 
-    private function __construct() {
+
+
+    private function __construct()
+    {
         try { // Выявляем ошибки
             $this->pdo = new PDO("mysql:host=" . Config::get('mysql.host') . ";dbname=" . Config::get('mysql.database'), Config::get('mysql.username'), Config::get('mysql.password'));
         }catch (PDOException $exception) { // Выявляем ошибки
             die($exception->getMessage());
         }
     }
+
+
 
     // вызовом метода - getInstance(), вызываем __construct() который подключает к БД
     public static function getInstance()
@@ -39,7 +45,6 @@ class Database {
             }
         }
 
-
         if(!$this->query->execute())
         {
             $this->error = true;
@@ -52,6 +57,8 @@ class Database {
 
         return $this;
     }
+
+
 
     public function error()
     {
@@ -78,6 +85,8 @@ class Database {
         return $this->action('DELETE', $table, $where);
     }
 
+
+
     public function action($action, $table, $where = [])
     {
         if(count($where) === 3) {
@@ -100,6 +109,8 @@ class Database {
         return false;
     }
 
+
+
     public function insert($table, $fields = [])
     {
         $values = '';
@@ -116,6 +127,8 @@ class Database {
         return false;
 
     }
+
+
 
     public function update($table, $id, $fields = [])
     {
