@@ -31,6 +31,9 @@ class Database
 
         return self::$instance;
     }
+
+
+
     // в $params = [] попадут параметры из sql запроса
     public function query($sql, $params = [])
     {
