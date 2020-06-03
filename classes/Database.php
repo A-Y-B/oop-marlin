@@ -35,12 +35,12 @@ class Database
 
 
     // в $params = [] попадут параметры из sql запроса
+    // count - удостоверимся что $params не пустой - имеет значение
     public function query($sql, $params = [])
     {
         $this->error = false;
         $this->query = $this->pdo->prepare($sql);
 
-        // count - удостоверимся что $params не пустой - имеет значение
         if(count($params)) {
             $i = 1;
             foreach($params as $param) {
@@ -88,9 +88,11 @@ class Database
 
 
 
+    // if(count($where) === 3) если 3 элемента в $where
+    // если в массиве $operators есть $operator
+    // in_array возвращает true или false в зависимости от того нашла ли эта функция значение $operator в массиве $operators
     public function action($action, $table, $where = [])
     {
-        // if(count($where) === 3) если 3 элемента в $where
         if(count($where) === 3) {
 
             $operators = ['=', '>', '<', '>=', '<='];
@@ -99,8 +101,6 @@ class Database
             $operator = $where[1];
             $value = $where[2];
 
-            // если в массиве $operators есть $operator
-            // in_array возвращает true или false в зависимости от того нашла ли эта функция значение $operator в массиве $operators
             if(in_array($operator, $operators)) {
 
                 $sql = "{$action} FROM {$table} WHERE {$field} {$operator} ?";
@@ -115,6 +115,9 @@ class Database
 
 
 
+    // "INSERT INTO users () VALUES ()";
+    // "INSERT INTO users ('username', 'password') VALUES ('marlin', 'password')";
+    // "INSERT INTO users ('username', 'password') VALUES (?, ?)";
     public function insert($table, $fields = [])
     {
         $values = '';
