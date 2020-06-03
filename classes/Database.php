@@ -124,6 +124,7 @@ class Database
 
     // $keys = array_keys($fields);
     // var_dump('`' . implode('`, `', $keys) . '`'); die();
+// rtrim($values, ',') -- rtrim отрезает с права у переменной $values запятую
     public function insert($table, $fields = [])
     {
         $values = '';
@@ -134,7 +135,7 @@ class Database
 
         $sql = "INSERT INTO {$table} (" . '`' . implode('`, `', array_keys($fields)) . '`' . ") VALUES ({$val})";
 
-        if(!$this->query($sql, $fields)->error()) {
+        if(!$this->query($sql, $fields)->error()) { // Если ошибок нет, то возвращаем, иначе не возвращаем
             return true;
         }
         return false;
