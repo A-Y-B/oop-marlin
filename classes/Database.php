@@ -104,7 +104,7 @@ class Database
             if(in_array($operator, $operators)) {
 
                 $sql = "{$action} FROM {$table} WHERE {$field} {$operator} ?";
-                if(!$this->query($sql, [$value])->error()) { //true если есть ошибка
+                if(!$this->query($sql, [$value])->error()) { //если ошибок нет
                     return $this; // возвращаем обьект
                 }
             }
