@@ -115,9 +115,9 @@ class Database
 
 
 
-    // "INSERT INTO users () VALUES ()";
-    // "INSERT INTO users ('username', 'password') VALUES ('marlin', 'password')";
-    // "INSERT INTO users ('username', 'password') VALUES (?, ?)";
+// "INSERT INTO users () VALUES ()";
+// "INSERT INTO users ('username', 'password') VALUES ('marlin', 'password')";
+// "INSERT INTO users ('username', 'password') VALUES (?, ?)";
     public function insert($table, $fields = [])
     {
         $values = '';
