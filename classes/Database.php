@@ -118,6 +118,12 @@ class Database
 // "INSERT INTO users () VALUES ()";
 // "INSERT INTO users ('username', 'password') VALUES ('marlin', 'password')";
 // "INSERT INTO users ('username', 'password') VALUES (?, ?)";
+// array_keys($fields) -- выбираем из массива ключи
+// (implode("', '", $keys)) -- implode создает строку с разделителем который прописан вначале
+// var_dump(array_keys($fields));die();
+
+    // $keys = array_keys($fields);
+    // var_dump('`' . implode('`, `', $keys) . '`'); die();
     public function insert($table, $fields = [])
     {
         $values = '';
