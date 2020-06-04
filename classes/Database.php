@@ -34,8 +34,8 @@ class Database
 
 
 
-    // в $params = [] попадут параметры из sql запроса
-    // count - удостоверимся что $params не пустой - имеет значение
+// в $params = [] попадут параметры из sql запроса
+// count - удостоверимся что $params не пустой - имеет значение
     public function query($sql, $params = [])
     {
         $this->error = false;
@@ -76,10 +76,14 @@ class Database
         return $this->count;
     }
 
+
+
     public function get($table, $where = [])
     {
         return $this->action('SELECT *', $table, $where);
     }
+
+
 
     public function delete($table, $where = [])
     {
@@ -88,9 +92,9 @@ class Database
 
 
 
-    // if(count($where) === 3) если 3 элемента в $where
-    // если в массиве $operators есть $operator
-    // in_array возвращает true или false в зависимости от того нашла ли эта функция значение $operator в массиве $operators
+// if(count($where) === 3) если 3 элемента в $where
+// если в массиве $operators есть $operator
+// in_array возвращает true или false в зависимости от того нашла ли эта функция значение $operator в массиве $operators
     public function action($action, $table, $where = [])
     {
         if(count($where) === 3) {
