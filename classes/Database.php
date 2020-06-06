@@ -157,6 +157,7 @@ class Database
 
         $set = rtrim($set, ','); // username = ?, password = ?
 
+        // $sql = "UPDATE users SET username = ?, password = ? WHERE id = 6";
         $sql = "UPDATE {$table} SET {$set} WHERE id = {$id}";
 
         if(!$this->query($sql, $fields)->error()){
@@ -171,3 +172,11 @@ class Database
         return $this->results()[0];
     }
 }
+
+
+
+
+
+
+
+
